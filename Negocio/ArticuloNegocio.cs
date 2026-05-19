@@ -258,5 +258,29 @@ namespace Negocio
                 datos.cerraConexion();
             }
         }
+        //metodo que valida la exixtencia de un articulo por su codigo, para evitar duplicados//correccion del tp anterior
+        public bool existeCodigo(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT Codigo FROM ARTICULOS WHERE Codigo = @codigo");
+
+                datos.setearParametro("@codigo", codigo);
+
+                datos.ejecutarLectura();
+
+                return datos.Lector.Read();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerraConexion();
+            }
+        }
     }
 }

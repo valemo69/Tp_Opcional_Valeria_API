@@ -44,6 +44,11 @@ namespace CatalogoAPI.Controllers
                     return Request.CreateResponse(
                         HttpStatusCode.BadRequest,
                         "El nombre es obligatorio.");
+                //llamo al metodo existecodigo
+                if (negocio.existeCodigo(dto.Codigo))
+                    return Request.CreateResponse(
+                        HttpStatusCode.Conflict,
+                        "El código del producto ya existe.");
 
                 // Crear objeto dominio
                 Articulos nuevo = new Articulos();
