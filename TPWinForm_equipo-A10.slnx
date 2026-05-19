@@ -3,6 +3,7 @@
     <File Path="Scripts/CATALOGO_DB_v3.sql" />
   </Folder>
   <Project Path="administracióndeartículos/administracióndeartículos.csproj" Id="854888f0-670d-4aa5-abe8-3594df59d623" />
+  <Project Path="CatalogoAPI/CatalogoAPI.csproj" Id="0553d8dc-ce50-47a7-bd36-a8d75baabf51" />
   <Project Path="Dominio/Dominio.csproj" Id="b8eaaadd-6a21-456b-97ec-720c31099c49" />
   <Project Path="Negocio/Negocio.csproj" Id="a51faa4a-f6bb-4231-a8f7-6a900f4c84a2" />
 </Solution>
