@@ -17,7 +17,11 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.IdMarca, A.IdCategoria, C.Descripcion AS Tipo, M.Descripcion AS Marca FROM ARTICULOS A JOIN CATEGORIAS C ON A.IdCategoria = C.Id JOIN MARCAS M ON A.IdMarca = M.Id");
+                datos.setearConsulta("SELECT A.ID, A.Codigo, A.Nombre, A.Descripcion AS DescripcionArticulo," +
+                    "A.Precio, A.IdMarca, A.IdCategoria, " +
+                    "C.Descripcion AS Tipo, " +
+                    "M.Descripcion AS Marca " +
+                    "FROM ARTICULOS A JOIN CATEGORIAS C ON A.IdCategoria = C.Id JOIN MARCAS M ON A.IdMarca = M.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -28,7 +32,7 @@ namespace Negocio
                     aux.ID = (int)datos.Lector["ID"];
                     aux.Codigo = (string)datos.leerColumna("Codigo");
                     aux.Nombre = (string)datos.leerColumna("Nombre");
-                    aux.Descripcion = (string)datos.leerColumna("Descripcion");
+                    aux.Descripcion = (string)datos.leerColumna("DescripcionArticulo");
 
                     if (!(datos.Lector["Precio"] is DBNull))
                         aux.Precio = (decimal)datos.Lector["Precio"];
@@ -46,6 +50,10 @@ namespace Negocio
 
                     ImagenNegocio imgNegocio = new ImagenNegocio();
                     aux.Imagenes = imgNegocio.listarImagenes(aux.ID);
+
+                    System.Diagnostics.Debug.WriteLine(
+                        "ID: " + aux.ID +
+                        " Nombre: " + aux.Nombre);
 
                     lista.Add(aux);
 

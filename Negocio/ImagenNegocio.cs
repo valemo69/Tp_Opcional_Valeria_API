@@ -38,6 +38,10 @@ namespace Negocio
 
                 throw ex;
             }
+            finally
+            {
+                datos.cerraConexion();
+            }
         }
 
         public void AgregarImagen(Imagen imagen)
